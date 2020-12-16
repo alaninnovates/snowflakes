@@ -1,0 +1,15 @@
+{
+  "name": "snowflakes",
+  "version": "1.0.0",
+  "description": "Bot that was used for the snowflakes event in the Owners Hub",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main"
+  },
+  "author": "TheOnlyGhostwolf",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "simple-json-db": "^1.2.2"
+  }
+}
