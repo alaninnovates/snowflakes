@@ -2,14 +2,21 @@
 
 This bot was used during [the Owners Hub](https://discord.gg/owners) Winter Extravaganza event.
 
+## Examples
+Snowflake drop: <br>
+![Screenshot](https://i.kawaii.sh/cH7eD04.png) <br>
+
+Logs: <br>
+![Screenshot](https://i.kawaii.sh/fgzhI6M.png) <br>
+
 ## Configuration
 
-`token` - bot's token
-`rarity` - the percentage of how often showflakes should appear
-`prefix` - bot's prefix
-`channels` - in what channels showflakes should appear
-`logs` - where the logs about catching snowflakes should be sent
-`cooldown` - time in seconds of how long the bot should wait before dropping another snowflake
+`token` - bot's token <br>
+`rarity` - the percentage of how often showflakes should appear <br>
+`prefix` - bot's prefix <br>
+`channels` - in what channels showflakes should appear <br>
+`logs` - where the logs about catching snowflakes should be sent <br>
+`cooldown` - time in seconds of how long the bot should wait before dropping another snowflake <br>
 
 ## Disclaimer
 
