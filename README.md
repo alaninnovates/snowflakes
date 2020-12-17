@@ -12,6 +12,7 @@ Logs: <br>
 ## Configuration
 
 `token` - bot's token <br>
+`developers` - list of bot developer IDs <br>
 `rarity` - the percentage of how often showflakes should appear <br>
 `prefix` - bot's prefix <br>
 `channels` - in what channels showflakes should appear <br>
