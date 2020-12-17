@@ -39,6 +39,33 @@ client.on('message', message => {
             });
             message.reply(new Discord.MessageEmbed().setColor('#93e7fb').setTitle(`Top 10 members`).setTimestamp(Date.now()).setDescription(text));
             break;
+        case `${prefix}eval`:
+            if (!config.developers.includes(message.author.id)) return;
+
+            function cleanString(text) {
+                if (typeof(text) == 'string') {
+                    return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
+                } else {
+                    return text;
+                }
+            }
+
+            try {
+                const code = args.join(' ');
+
+                let evaled = eval(code);
+                if (typeof evaled != 'string') evaled = require('util').inspect(evaled);
+
+                message.channel.send(cleanString(evaled), {
+                    code: 'xl'
+                });
+            } catch (error) {
+                message.channel.send(cleanString(error), {
+                    code: 'xl'
+                });
+            }
+            
+            break;
         default:
             if (!config.channels.includes(message.channel.id)) return;
             if (DB.get(message.author.id) == undefined) DB.set(message.author.id, 0);
