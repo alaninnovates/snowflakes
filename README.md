@@ -1,6 +1,6 @@
 # Snowflakes
 
-This bot was used during [the Owners Hub](https://discord.gg/owners) Winter Extravaganza event.
+This bot was used during [the Owners Hub](https://discord.gg/h4SdDX6Qn6) Winter Extravaganza event.
 
 ## Examples
 Snowflake drop: <br>
