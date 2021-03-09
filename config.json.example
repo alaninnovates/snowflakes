@@ -1,10 +1,7 @@
 {
     "token": "",
-    "developers": [
-        ""
-    ],
     "rarity": 10,
-    "prefix": "",
+    "prefix": "s!",
     "channels": [
         ""
     ],

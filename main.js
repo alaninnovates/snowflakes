@@ -1,5 +1,3 @@
-/* WARNING : Bad code ahead*/
-
 const Discord = require('discord.js');
 const config = require('./config.json');
 
@@ -51,56 +49,20 @@ client.on('message', async (message) => {
 			);
 			break;
 		case `${prefix}top`:
-			let top = [];
 			const json = db.JSON();
-			for (const i in json) {
-				top.push([json[i], i]);
-			}
+            let top = Object.entries(json);
 			const sorted = top
 				.sort(function (a, b) {
-					return b[0] - a[0];
+					return b[1] - a[1];
 				})
 				.slice(0, 10);
-			const d = sorted.map((t) => {
-				`<@${t[1]}> - **${t[0]}** snowflakes`;
-			});
 			message.reply(
 				new Discord.MessageEmbed()
 					.setColor('#93e7fb')
 					.setTitle(`Top 10 members`)
 					.setTimestamp(Date.now())
-					.setDescription(d.join('\n')),
+					.setDescription(sorted.map((t) => `<@${t[0]}> - **${t[1]}** snowflakes`).join('\n')),
 			);
-			break;
-		case `${prefix}eval`:
-			if (!config.developers.includes(message.author.id)) return;
-
-			const cleanString = (text) => {
-				if (typeof text == 'string') {
-					return text
-						.replace(/`/g, '`' + String.fromCharCode(8203))
-						.replace(/@/g, '@' + String.fromCharCode(8203));
-				} else {
-					return text;
-				}
-			};
-
-			try {
-				const code = args.join(' ');
-
-				let evaled = eval(code);
-				if (typeof evaled != 'string')
-					evaled = require('util').inspect(evaled);
-
-				message.channel.send(cleanString(evaled), {
-					code: 'xl',
-				});
-			} catch (error) {
-				message.channel.send(cleanString(error), {
-					code: 'xl',
-				});
-			}
-
 			break;
 		default:
 			if (!config.channels.includes(message.channel.id)) return;
@@ -118,12 +80,13 @@ client.on('message', async (message) => {
 					const filter = (reaction) => reaction.emoji.name == '🥶';
 					try {
 						const collected = await m.awaitReactions(filter, {
-							max: 1,
+							max: 2,
 							time: 10000,
 							errors: ['time'],
 						});
 
 						let person = collected.get('🥶');
+                        
 						person = person.users.cache
 							.filter((id) => id != client.user.id)
 							.first().id;
@@ -167,11 +130,13 @@ client.on('message', async (message) => {
 					const filter = (reaction) => reaction.emoji.name == '🐻‍❄️';
 					try {
 						const collected = await m.awaitReactions(filter, {
-							max: 1,
+							max: 2,
 							time: 10000,
 							errors: ['time'],
 						});
+
 						let person = collected.get('🐻‍❄️');
+                        
 						person = person.users.cache
 							.filter((id) => id != client.user.id)
 							.first().id;
@@ -245,10 +210,11 @@ client.on('message', async (message) => {
 					const filter = (reaction) => reaction.emoji.name == '🎄';
 					try {
 						const collected = await m.awaitReactions(filter, {
-							max: 1,
+							max: 2,
 							time: 10000,
 							errors: ['time'],
 						});
+
 						let person = collected.get('🎄');
 						person = person.users.cache
 							.filter((id) => id != client.user.id)
@@ -292,11 +258,13 @@ client.on('message', async (message) => {
 					const filter = (reaction) => reaction.emoji.name == '❄️';
 					try {
 						const collected = await m.awaitReactions(filter, {
-							max: 1,
+							max: 2,
 							time: 10000,
 							errors: ['time'],
 						});
+
 						let person = collected.get('❄️');
+                        
 						person = person.users.cache
 							.filter((id) => id != client.user.id)
 							.first().id;
