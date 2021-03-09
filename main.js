@@ -56,20 +56,20 @@ client.on('message', async (message) => {
 			for (const i in json) {
 				top.push([json[i], i]);
 			}
-			text = ``;
-			top.sort(function (a, b) {
-				return b[0] - a[0];
-			})
-				.slice(0, 10)
-				.forEach((t) => {
-					text += `<@${t[1]}> - **${t[0]}** snowflakes\n`;
-				});
+			const sorted = top
+				.sort(function (a, b) {
+					return b[0] - a[0];
+				})
+				.slice(0, 10);
+			const d = sorted.map((t) => {
+				`<@${t[1]}> - **${t[0]}** snowflakes`;
+			});
 			message.reply(
 				new Discord.MessageEmbed()
 					.setColor('#93e7fb')
 					.setTitle(`Top 10 members`)
 					.setTimestamp(Date.now())
-					.setDescription(text),
+					.setDescription(d.join('\n')),
 			);
 			break;
 		case `${prefix}eval`:
